@@ -52,23 +52,27 @@ function extractHashtags(twitter_tweets){
 
 
 function countHashtags(hashtags){
-  stats = {};
+  tags = {};
   for(var i = 0; i<hashtags.length; i++){
     if(null != hashtags[i]){
       for(var j = 0; j<hashtags[i].length; j++){
-        if ( stats.hasOwnProperty( hashtags[i][j] ) ) {
-            /* `stats` already has an entry for the current `word`.
-               As a result, let's increment the count for that `word`. */
-            stats[ hashtags[i][j] ] = stats[ hashtags[i][j] ] + 1;
+        if ( tags.hasOwnProperty( hashtags[i][j] ) ) {
+            tags[ hashtags[i][j] ] = tags[ hashtags[i][j] ] + 1;
         } else {
-            /* `stats` does not yet have an entry for the current `word`.
-               As a result, let's add a new entry, and set count to 1. */
-            stats[ hashtags[i][j] ] = 1;
+            tags[ hashtags[i][j] ] = 1;
         }
       }
     }
   }
-  console.log(stats);
+  var sortable = [];
+  for (var tag in tags){
+    sortable.push([tag, tags[tag]])
+  }
+
+  sortable.sort(function(a, b) {
+      return a[1] - b[1]
+  })
+    console.log(sortable);
 }
 
 
