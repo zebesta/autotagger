@@ -72,4 +72,4 @@ function postImage(imgurl) {
 
 
 
-postImage('http://images.mentalfloss.com/sites/default/files/styles/article_640x430/public/badgerprimary.png');
+postImage('http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg');

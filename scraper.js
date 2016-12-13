@@ -24,7 +24,7 @@ function scraper(hashtag){
         params.max_id = tweets.statuses[tweets.statuses.length - 1].id
         //push on to array if not retweet
         tweets.statuses.map((t) => !t.retweeted_status ? twitter_tweets.push(t.text)  : null);
-        if (twitter_tweets.length < 10) {
+        if (twitter_tweets.length < 1000) {
           console.log(i);
           fetch_tweets(params)
           i++;
@@ -70,7 +70,7 @@ function countHashtags(hashtags){
   }
 
   sortable.sort(function(a, b) {
-      return a[1] - b[1]
+      return b[1] - a[1]
   })
     console.log(sortable);
 }
