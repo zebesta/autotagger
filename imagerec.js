@@ -1,34 +1,10 @@
 require('dotenv').load();
 var axios = require('axios')
+var scraper = require('./scraper')
 
 console.log(process.env.CLARIFAI_CLIENT_ID);
 console.log(process.env.CLARIFAI_SECRET_KEY);
 
-// var Clarifai = require('clarifai');
-// var app = new Clarifai.App(
-//   process.env.CLARIFAI_CLIENT_ID,
-//   process.env.CLARIFAI_SECRET_KEY
-// );
-// console.log("APP");
-// console.log(app);
-// var model = app.models.get("general-v1.3");
-// console.log("MODEL");
-// model.then((result)=>{
-//   console.log(result);
-//   model.predict_by_url(url='https://samples.clarifai.com/metro-north.jpg').then((results)=>{
-//     console.log(results);
-//   })
-//   .catch((errors)=>{
-//     console.log(errors);
-//   })
-//
-//     // result.models.get("general-v1.3");
-//
-//   })
-//   .catch((error)=>{
-//     console.log(error)
-//   });
-//
 
 
   function getCredentials() {
@@ -86,7 +62,8 @@ function postImage(imgurl) {
     var tags = r.data.results[0].result.tag.classes;
     var probs = r.data.results[0].result.tag.probs;
     console.log(tags);
-    console.log(probs)
+    console.log(probs);
+    scraper(tags[0]);
     // console.log(parseResponse(r));
   }, function(err) {
     console.log('Sorry, something is wrong: ' + err);
@@ -95,4 +72,4 @@ function postImage(imgurl) {
 
 
 
-postImage('http://friendofafarmer.com/brooklyn_files/small_24779.jpg');
+postImage('http://images.mentalfloss.com/sites/default/files/styles/article_640x430/public/badgerprimary.png');
