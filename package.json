@@ -1,0 +1,15 @@
+{
+  "name": "hashtagger",
+  "version": "1.0.0",
+  "description": "Automatic hashtag generation based on image content and related hash tags",
+  "main": "scraper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "twitter",
+    "hashtag"
+  ],
+  "author": "Chris Sebesta",
+  "license": "ISC"
+}
