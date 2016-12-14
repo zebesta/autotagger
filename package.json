@@ -4,12 +4,27 @@
   "description": "Automatic hashtag generation based on image content and related hash tags",
   "main": "scraper.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [
     "twitter",
     "hashtag"
   ],
   "author": "Chris Sebesta",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "promise": "^7.1.1",
+    "twitter": "^1.7.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zebesta/autotagger.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zebesta/autotagger/issues"
+  },
+  "homepage": "https://github.com/zebesta/autotagger#readme"
 }
