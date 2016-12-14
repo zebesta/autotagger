@@ -1,4 +1,3 @@
-require('dotenv').load();
 var axios = require('axios')
 var scraper = require('./scraper')
 
