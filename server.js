@@ -1,9 +1,12 @@
 var express = require('express');
+var cors = require('cors')
+
 var imagerec = require('./imagerec');
 var scraper = require('./scraper');
 
 var app = express();
 app.use(express.static('public'))
+app.use(cors());
 
 
 // image based query to pull dominate image recognition then tags
