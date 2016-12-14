@@ -63,7 +63,14 @@ function postImage(imgurl) {
     var probs = r.data.results[0].result.tag.probs;
     console.log(tags);
     console.log(probs);
-    scraper(tags[0]);
+    var p = scraper(tags[0]);
+    p.then(results=>{
+      console.log("@@@@@@@@@@@@@@@");
+      console.log(results);
+    })
+    .catch(err=>{
+      console.log("error!");
+    })
     // console.log(parseResponse(r));
   }, function(err) {
     console.log('Sorry, something is wrong: ' + err);

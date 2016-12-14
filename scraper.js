@@ -1,5 +1,6 @@
 require('dotenv').load();
 var Twitter = require('twitter');
+var Promise = require('promise');
 
 console.log(process.env.TWITTER_CONSUMER_KEY);
 
@@ -9,37 +10,39 @@ var client = new Twitter({
   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
-function scraper(hashtag){
-  hashtag = '#'+hashtag;
-  // hashtag = '#kolache';
-  console.log(hashtag);
-  var params = {
-    q: hashtag,
-    count: 100
-  };
-  var twitter_tweets = [];
-  (function fetch_tweets(params) {
-    client.get('search/tweets', params, function (error, tweets, response) {
-      if (!error) {
-        moretweets = true;
-        //if there are tweets
-        if(tweets.statuses.length>1){
-          params.max_id = tweets.statuses[tweets.statuses.length - 1].id
-          //push on to array if not retweet
-          tweets.statuses.map((t) => !t.retweeted_status ? twitter_tweets.push(t.text)  : null);
-        }else{
-          moretweets = false;
-        }
+var scraper = (hashtag)=>{
+  return new Promise(function(resolve, reject){
+    hashtag = '#'+hashtag;
+    // hashtag = '#kolache';
+    console.log(hashtag);
+    var params = {
+      q: hashtag,
+      count: 10
+    };
+    var twitter_tweets = [];
+    (function fetch_tweets(params) {
+      client.get('search/tweets', params, function (error, tweets, response) {
+        if (!error) {
+          moretweets = true;
+          //if there are tweets
+          if(tweets.statuses.length>1){
+            params.max_id = tweets.statuses[tweets.statuses.length - 1].id
+            //push on to array if not retweet
+            tweets.statuses.map((t) => !t.retweeted_status ? twitter_tweets.push(t.text)  : null);
+          }else{
+            moretweets = false;
+          }
 
-        if (twitter_tweets.length < 1000 && moretweets) {
-          fetch_tweets(params)
-        } else {
-          console.log(twitter_tweets)
-          return extractHashtags(twitter_tweets);
+          if (twitter_tweets.length < 10 && moretweets) {
+            fetch_tweets(params)
+          } else {
+            // resolve the promise with a sorted array of hashtags
+            resolve(extractHashtags(twitter_tweets));
+          }
         }
-      }
-    })
-  } (params))
+      })
+    } (params))
+  });
 }
 
 function extractHashtags(twitter_tweets){
@@ -77,7 +80,7 @@ function countHashtags(hashtags){
   sortable.sort(function(a, b) {
       return b[1] - a[1]
   })
-    console.log(sortable);
+    // console.log(sortable);
     return sortable;
 }
 
