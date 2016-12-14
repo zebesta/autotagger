@@ -29,7 +29,7 @@ function scraper(hashtag){
           fetch_tweets(params)
           i++;
         } else {
-          // console.log(twitter_tweets)
+          console.log(twitter_tweets)
           extractHashtags(twitter_tweets);
         }
       }
@@ -42,7 +42,7 @@ function extractHashtags(twitter_tweets){
   for(var i = 0; i<twitter_tweets.length; i++){
     // var re = /(^|\s+|\n+)(#[a-z\d-]+)/gi
     var re = /(#[a-z\d-]+)/gi
-    var hashtags = twitter_tweets[i].match(re);
+    var hashtags = twitter_tweets[i].toLowerCase().match(re);
     // console.log(hashtags);
     allTags.push(hashtags)
   }

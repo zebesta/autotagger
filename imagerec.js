@@ -72,4 +72,4 @@ function postImage(imgurl) {
 
 
 
-postImage('http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg');
+postImage('http://markdalton.net/wp-content/uploads/2016/10/9a1439_8a19f1319de247a280bdcaea2c3a44efmv2_d_1980_1320_s_2.jpg');
