@@ -1,4 +1,3 @@
-require('dotenv').load();
 var Twitter = require('twitter');
 var Promise = require('promise');
 
