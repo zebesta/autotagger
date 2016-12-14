@@ -11,26 +11,31 @@ var client = new Twitter({
 });
 function scraper(hashtag){
   hashtag = '#'+hashtag;
+  // hashtag = '#kolache';
   console.log(hashtag);
   var params = {
     q: hashtag,
     count: 100
   };
-  var i = 1;
   var twitter_tweets = [];
   (function fetch_tweets(params) {
     client.get('search/tweets', params, function (error, tweets, response) {
       if (!error) {
-        params.max_id = tweets.statuses[tweets.statuses.length - 1].id
-        //push on to array if not retweet
-        tweets.statuses.map((t) => !t.retweeted_status ? twitter_tweets.push(t.text)  : null);
-        if (twitter_tweets.length < 1000) {
-          console.log(i);
+        moretweets = true;
+        //if there are tweets
+        if(tweets.statuses.length>1){
+          params.max_id = tweets.statuses[tweets.statuses.length - 1].id
+          //push on to array if not retweet
+          tweets.statuses.map((t) => !t.retweeted_status ? twitter_tweets.push(t.text)  : null);
+        }else{
+          moretweets = false;
+        }
+
+        if (twitter_tweets.length < 1000 && moretweets) {
           fetch_tweets(params)
-          i++;
         } else {
           console.log(twitter_tweets)
-          extractHashtags(twitter_tweets);
+          return extractHashtags(twitter_tweets);
         }
       }
     })
@@ -47,7 +52,7 @@ function extractHashtags(twitter_tweets){
     allTags.push(hashtags)
   }
   // console.log(allTags);
-  countHashtags(allTags);
+  return(countHashtags(allTags));
 }
 
 
@@ -73,6 +78,7 @@ function countHashtags(hashtags){
       return b[1] - a[1]
   })
     console.log(sortable);
+    return sortable;
 }
 
 
