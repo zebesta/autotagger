@@ -11,18 +11,16 @@ app.use(cors());
 
 // image based query to pull dominate image recognition then tags
 app.get('/', function(req, res) {
-  var consumer_key = process.env.TWITTER_CONSUMER_KEY;
-  res.json(consumer_key);
-  // var hello = imagerec('http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg');
-  // console.log(hello);
-  // hello.then(results=>{
-  //   console.log("RESOLVING ON SERVER");
-  //   console.log(hello);
-  //   res.json(results);
-  // })
-  // .catch(err=>{
-  //   res.json("Holy shit, theres been an error!");
-  // });
+  var hello = imagerec('http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg');
+  console.log(hello);
+  hello.then(results=>{
+    console.log("RESOLVING ON SERVER");
+    console.log(hello);
+    res.json(results);
+  })
+  .catch(err=>{
+    res.json("Holy shit, theres been an error!");
+  });
 });
 
 // Direct query with a tag instead of an image
