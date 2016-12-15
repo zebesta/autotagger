@@ -43,6 +43,9 @@
       }
     };
   }
+  function clearlist(){
+    document.getElementById("selectedTags").innerHTML = '';
+  }
 
   </script>
 
@@ -50,6 +53,7 @@
     <h2>Super basic HTML search for hashtag results and correlated hashtags:</h2>
     Hashtag: <input type="text" name="tag" id=tag><br>
     <button type="button" onclick="loadDoc()">Search For Hashtag</button>
+    <button type="button" onclick="clearlist()">Clear Selected Hashtag List</button>
   </div>
   <p id="selectedTags"></P>
   <p id="results"></p>
