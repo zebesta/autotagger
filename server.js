@@ -11,6 +11,10 @@ app.use(cors());
 
 // image based query to pull dominate image recognition then tags
 app.get('/', function(req, res) {
+  res.redirect('/home.html')
+});
+
+app.get('/img', function(req, res) {
   var hello = imagerec('http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg');
   console.log(hello);
   hello.then(results=>{

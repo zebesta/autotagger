@@ -2,11 +2,28 @@
 <head>
 </head>
 <body>
-  <form>
-  First name:<br>
-  <input type="text" name="firstname"><br>
-  Last name:<br>
-  <input type="text" name="lastname">
+  <script>
+    function loadDoc() {
+    var xhttp = new XMLHttpRequest();
+    var tag = document.getElementById("tag").value;
+    document.getElementById("results").innerHTML = 'Loading, this could take a sec...';
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+       document.getElementById("results").innerHTML = this.responseText;
+      }
+    };
+    var url = "http://localhost:5000/tag/" + tag
+    xhttp.open("GET", url, true);
+    xhttp.send();
+  }
+  </script>
+
+  <div id="demo">
+    <h2>Super basic HTML search for hashtag results and correlated hashtags:</h2>
+    Hashtag: <input type="text" name="tag" id=tag><br>
+    <button type="button" onclick="loadDoc()">Search For Hashtag</button>
+  </div>
+  <p id="results"></p>
 </form>
 </body>
 </html>
