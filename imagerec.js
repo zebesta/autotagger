@@ -7,6 +7,7 @@ console.log(process.env.CLARIFAI_SECRET_KEY);
 
 var imagerec = (urlString)=> {
   return new Promise((resolve,reject)=>{
+    console.log("in image rec...");
     function getCredentials() {
       var data = {
         'grant_type': 'client_credentials',

@@ -11,6 +11,7 @@ var client = new Twitter({
 });
 var scraper = (hashtag)=>{
   return new Promise((resolve, reject)=>{
+    console.log("In scraper...");
     hashtag = '#'+hashtag;
     // hashtag = '#kolache';
     console.log(hashtag);
