@@ -12,7 +12,11 @@
        document.getElementById("results").innerHTML = this.responseText;
       }
     };
-    var url = "http://localhost:5000/tag/" + tag
+    var getUrl = window.location;
+    console.log(getUrl);
+    var baseUrl = getUrl.protocol + "//" + getUrl.host;
+    var url = baseUrl + '/tag/' + tag;
+    console.log(url);
     xhttp.open("GET", url, true);
     xhttp.send();
   }
