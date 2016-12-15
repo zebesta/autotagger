@@ -16,7 +16,7 @@ var scraper = (hashtag)=>{
     console.log(hashtag);
     var params = {
       q: hashtag,
-      count: 10
+      count: 100
     };
     var twitter_tweets = [];
     (function fetch_tweets(params) {
