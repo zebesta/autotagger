@@ -1,17 +1,14 @@
 <html lang="en">
 <head>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </head>
 </head>
 <body>
   <script>
     function loadDoc() {
     var xhttp = new XMLHttpRequest();
     var tag = document.getElementById("tag").value;
-    document.getElementById("results").innerHTML = 'Loading, this could take a sec...';
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-       document.getElementById("results").innerHTML = this.responseText;
-      }
-    };
     var getUrl = window.location;
     console.log(getUrl);
     var baseUrl = getUrl.protocol + "//" + getUrl.host;
@@ -19,6 +16,20 @@
     console.log(url);
     xhttp.open("GET", url, true);
     xhttp.send();
+
+    document.getElementById("results").innerHTML = 'Loading, this could take a sec...';
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+       var hashtags = JSON.parse(this.responseText);
+       document.getElementById("results").innerHTML = '<ul></ul>';
+       for(var i = 0; i < hashtags.length; i++){
+         console.log(hashtags[i][0]);
+         var node = document.createElement("LI");
+         node.innerHTML = hashtags[i][0];
+         document.getElementById("results").appendChild(node);
+       };
+      }
+    };
   }
   </script>
 
