@@ -32,7 +32,7 @@ var scraper = (hashtag)=>{
             moretweets = false;
           }
 
-          if (twitter_tweets.length < 1000 && moretweets) {
+          if (twitter_tweets.length < 500 && moretweets) {
             fetch_tweets(params)
           } else {
             // resolve the promise with a sorted array of hashtags
