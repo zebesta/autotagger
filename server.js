@@ -35,6 +35,8 @@ app.get('/img', function(req, res) {
 //not being allowed.....
 app.get('/img/url', function(req, res) {
   var imgUrl = req.body.imgUrl;
+  //hard code the fuck outta this
+  imgUrl = 'http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg';
   console.log(imgUrl);
   var hello = imagerec(imgUrl); //imagerec('http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg');
   console.log("printing hello");
