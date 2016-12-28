@@ -42,14 +42,7 @@ app.post('/img/url', function(req, res) {
   hello.then(results=>{
     console.log("RESOLVING ON SERVER");
     console.log(hello);
-    var scraped = scraper(tag);
-    scraped.then(results=>{
-      res.json(results);
-    })
-    .catch(err=>{
-      res.json(err);
-    });
-    // res.json(results);
+    res.json(results);
   })
   .catch(err=>{
     res.json("Holy shit, theres been an error!");
