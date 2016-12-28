@@ -119,10 +119,12 @@
 
           <input type="submit" value="Send File" class="form-control">
         </form>
-        <form class="form-group" enctype="application/x-www-form-urlencoded" onsubmit="urlCall()">
+        <!-- <form class="form-group" enctype="application/x-www-form-urlencoded" onsubmit="urlCall()">
           Image URL: <input name="imgUrl" type="text" id=imgUrl class="form-control">
           <input type="submit" value="Send File" class="form-control">
-        </form>
+        </form> -->
+        Image URL: <input name="imgUrl" type="text" id=imgUrl class="form-control">
+        <button type="button" onclick="loadDoc()">Search For Hashtag</button>
       <br>
       <button type="button" onclick="clearlist()">Clear Selected Hashtag List</button>
       </div>

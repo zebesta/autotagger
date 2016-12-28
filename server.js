@@ -49,6 +49,7 @@ app.get('/img/url', function(req, res) {
       res.json(results);
     })
     .catch(err=>{
+      console.log("I FAILED IN THE SECOND LAYER!")
       res.json("I FAILED IN THE SECOND LAYER!")
     });
     // res.json(results);
