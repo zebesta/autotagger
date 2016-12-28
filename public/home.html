@@ -40,7 +40,7 @@
       var baseUrl = getUrl.protocol + "//" + getUrl.host;
       var url = baseUrl + '/img/url';
       console.log(url);
-      xhttp.open("GET", url, true);
+      xhttp.open("POST", url, true);
       xhttp.send();
 
       document.getElementById("results").innerHTML = 'Loading, this could take a sec...';
