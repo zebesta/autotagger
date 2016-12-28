@@ -14,6 +14,7 @@
     function populateResults() {
       console.log("in populate results");
       if (this.readyState == 4 && this.status == 200) {
+        console.log("In pop results with proper ready state");
        var hashtags = JSON.parse(this.responseText);
        document.getElementById("results").innerHTML = '<h3>Related Hashtags</h3><div></div>';
        for(var i = 0; i < hashtags.length; i++){
