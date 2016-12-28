@@ -114,12 +114,12 @@
         <h3>Search for hashtags based on an image</h3>
         <p>This will automatically determine the main content of your image and search for a hashtag based on that.
         This will then return related hashtags for selection.</p>
-        <form class="form-group" enctype="multipart/form-data" method=post onsubmit="myFunction()">
+        <form class="form-group" enctype="multipart/form-data">
           <input name="file" type="file" id=file class="form-control">
 
           <input type="submit" value="Send File" class="form-control">
         </form>
-        <form class="form-group" enctype="application/x-www-form-urlencoded" method=post onsubmit="urlCall()">
+        <form class="form-group" enctype="application/x-www-form-urlencoded" onsubmit="urlCall()">
           Image URL: <input name="imgUrl" type="text" id=imgUrl class="form-control">
           <input type="submit" value="Send File" class="form-control">
         </form>
