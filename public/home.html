@@ -51,8 +51,24 @@
 
   <div id="demo">
     <h2>Super basic HTML search for hashtag results and correlated hashtags:</h2>
-    Hashtag: <input type="text" name="tag" id=tag><br>
-    <button type="button" onclick="loadDoc()">Search For Hashtag</button>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Search for hashtags based on an image</h3>
+        <p>This will automatically determine the main content of your image and search for a hashtag based on that.
+        This will then return related hashtags for selection.</p>
+        <form class="form-group" enctype="multipart/form-data" action="http://localhost:5000/calculate" method=post onsubmit="myFunction()">
+        <input name="file" type="file" id=file class="form-control">
+
+        <input type="submit" value="Send File" class="form-control">
+      </form>
+      </div>
+      <div class="col-md-6">
+        <h3>Search for hashtags based on a root hashtag</h3>
+        <p> This will find correlated hashtags and display them for selection.</p>
+        Hashtag: <input type="text" name="tag" id=tag><br>
+        <button type="button" onclick="loadDoc()">Search For Hashtag</button>
+      </div>
+    </div>
     <button type="button" onclick="clearlist()">Clear Selected Hashtag List</button>
   </div>
   <p id="selectedTags"></P>
