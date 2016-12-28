@@ -46,7 +46,7 @@
 
       document.getElementById("results").innerHTML = 'Loading, this could take a sec...';
       xhttp.onreadystatechange = function() {
-        console.log("in populate results");
+        console.log("xhttp ready state changed");
         if (this.readyState == 4 && this.status == 200) {
           console.log("In pop results with proper ready state");
          var hashtags = JSON.parse(this.responseText);

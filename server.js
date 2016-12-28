@@ -33,7 +33,7 @@ app.get('/img', function(req, res) {
 });
 
 //not being allowed.....
-app.post('/img/url', cors(), function(req, res) {
+app.post('/img/url', function(req, res) {
   var imgUrl = req.body.imgUrl;
   console.log(imgUrl);
   var hello = imagerec(imgUrl); //imagerec('http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg');
@@ -42,7 +42,14 @@ app.post('/img/url', cors(), function(req, res) {
   hello.then(results=>{
     console.log("RESOLVING ON SERVER");
     console.log(hello);
-    res.json(results);
+    var scraped = scraper(tag);
+    scraped.then(results=>{
+      res.json(results);
+    })
+    .catch(err=>{
+      res.json(err);
+    });
+    // res.json(results);
   })
   .catch(err=>{
     res.json("Holy shit, theres been an error!");
