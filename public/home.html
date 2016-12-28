@@ -60,9 +60,28 @@
       xhttp.send();
 
       document.getElementById("results").innerHTML = 'Loading, this could take a sec...';
-      var callback = populateResults();
-      xhttp.onreadystatechange = callback;
-    }
+      xhttp.onreadystatechange = function() {
+        console.log("in populate results");
+        if (this.readyState == 4 && this.status == 200) {
+          console.log("In pop results with proper ready state");
+         var hashtags = JSON.parse(this.responseText);
+         document.getElementById("results").innerHTML = '<h3>Related Hashtags</h3><div></div>';
+         for(var i = 0; i < hashtags.length; i++){
+           console.log(hashtags[i][0]);
+           var node = document.createElement("button");
+           node.className = "btn btn-default"
+           node.innerHTML = hashtags[i][0];
+           node.onclick =  function(){
+             var addHash = document.createElement("span");
+             addHash.innerHTML = this.innerHTML + ' ';
+             document.getElementById("selectedTags").appendChild(addHash);
+             console.log("secondary click!");
+           };
+           document.getElementById("results").appendChild(node);
+         };
+        }
+      };
+    };
     function clearlist(){
       document.getElementById("selectedTags").innerHTML = '';
     }
