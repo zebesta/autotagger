@@ -31,10 +31,13 @@ app.get('/img', function(req, res) {
     res.json("Holy shit, theres been an error!");
   });
 });
-app.post('/img/url', function(req, res) {
+
+//not being allowed.....
+app.post('/img/url', cors(), function(req, res) {
   var imgUrl = req.body.imgUrl;
   console.log(imgUrl);
   var hello = imagerec(imgUrl); //imagerec('http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg');
+  console.log("printing hello");
   console.log(hello);
   hello.then(results=>{
     console.log("RESOLVING ON SERVER");
