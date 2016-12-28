@@ -44,7 +44,14 @@ app.get('/img/url', function(req, res) {
   hello.then(results=>{
     console.log("RESOLVING ON SERVER");
     console.log(hello);
-    res.json(results);
+    hello.then(results=>{
+      console.log("SECOND LAYER INCEPTION!");
+      res.json(results);
+    })
+    .catch(err=>{
+      res.json("I FAILED IN THE SECOND LAYER!")
+    });
+    // res.json(results);
   })
   .catch(err=>{
     res.json("Holy shit, theres been an error!");
