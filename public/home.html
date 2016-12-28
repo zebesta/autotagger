@@ -44,7 +44,8 @@
       xhttp.send();
 
       document.getElementById("results").innerHTML = 'Loading, this could take a sec...';
-      xhttp.onreadystatechange = populateResults();
+      var callback = populateResults();
+      xhttp.onreadystatechange = callback;
     };
     function loadDoc() {
       var xhttp = new XMLHttpRequest();
@@ -58,7 +59,8 @@
       xhttp.send();
 
       document.getElementById("results").innerHTML = 'Loading, this could take a sec...';
-      xhttp.onreadystatechange = populateResults();
+      var callback = populateResults();
+      xhttp.onreadystatechange = callback;
     }
     function clearlist(){
       document.getElementById("selectedTags").innerHTML = '';
