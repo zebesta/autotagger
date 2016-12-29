@@ -42,7 +42,10 @@
       var url = baseUrl + '/img/url';
       console.log(url);
       xhttp.open("GET", url, true);
-      xhttp.send();
+      //TODO: Append the actual imgUrl here!!!
+      var data = new FormData();
+      data.append('imgUrl', imgUrl);
+      xhttp.send(data);
 
       document.getElementById("results").innerHTML = 'Loading, this could take a sec...';
       xhttp.onreadystatechange = function() {
@@ -124,7 +127,8 @@
           <input type="submit" value="Send File" class="form-control">
         </form> -->
         Image URL: <input name="imgUrl" type="text" id=imgUrl class="form-control">
-        <button type="button" onclick="loadDoc()">Search For Hashtag</button>
+        <button type="button" onclick="urlCall()">Search For Hashtags with Image URL</button>
+      <br>
       <br>
       <button type="button" onclick="clearlist()">Clear Selected Hashtag List</button>
       </div>

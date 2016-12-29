@@ -34,6 +34,7 @@ app.get('/img', function(req, res) {
 
 //not being allowed.....
 app.get('/img/url', function(req, res) {
+  console.log(req.body);
   var imgUrl = req.body.imgUrl;
   //hard code the fuck outta this
   imgUrl = 'https://static.pexels.com/photos/9816/pexels-photo-9816.jpeg';
